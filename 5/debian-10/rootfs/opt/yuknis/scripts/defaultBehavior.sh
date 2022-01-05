@@ -9,5 +9,6 @@ set -o nounset
 set -o pipefail
 # set -o xtrace # Uncomment this line for debugging purposes
 
-/opt/bitnami/scripts/wordpress/entrypoint.sh
-/opt/bitnami/scripts/nginx-php-fpm/run.sh
+echo Yuknis scripts completed, continuing to Bitnami...
+
+/opt/bitnami/scripts/wordpress/entrypoint.sh $1

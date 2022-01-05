@@ -16,7 +16,7 @@ RUN make install
 RUN echo extension=redis.so >> /opt/bitnami/php/etc/php.ini
 RUN apt-get remove --purge --yes gcc make autoconf libc-dev pkg-config wget
 
-COPY /rootfs/opt/yuknis /opt/
+COPY rootfs /
 ENV PHP_SESSION_SAVE_HANDLER=files \
     PHP_SESSION_SAVE_PATH=\/opt\/bitnami\/php\/var\/run\/session
 
@@ -24,4 +24,7 @@ EXPOSE 8080 8443
 
 USER 1001
 ENTRYPOINT [ "/opt/yuknis/scripts/setCustomSession.sh" ]
-CMD [ "/opt/yuknis/scripts/defaultBehavior.sh" ]
+CMD [ "/opt/bitnami/scripts/nginx-php-fpm/run.sh" ]
+
+# ENTRYPOINT [ "/opt/bitnami/scripts/wordpress/entrypoint.sh" ]
+# CMD [ "/opt/bitnami/scripts/nginx-php-fpm/run.sh" ]
