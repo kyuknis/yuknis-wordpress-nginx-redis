@@ -5,7 +5,7 @@ LABEL maintainer "Kirk Yuknis <kirkland@yuknis.com>"
 USER 0
 
 ## Install 'PhpRedis'
-RUN install_packages gcc make autoconf libc-dev pkg-config wget
+RUN install_packages gcc make autoconf libc-dev pkg-config wget php7-redis
 RUN wget https://pecl.php.net/get/redis-5.3.5.tgz
 RUN tar xzf redis-5.3.5.tgz
 WORKDIR /redis-5.3.5
@@ -22,6 +22,7 @@ ENV PHP_SESSION_SAVE_HANDLER=files \
 
 EXPOSE 8080 8443
 
+## Change to restricted user and perform on run tasks
 USER 1001
 ENTRYPOINT [ "/opt/yuknis/scripts/setCustomSession.sh" ]
 CMD [ "/opt/bitnami/scripts/nginx-php-fpm/run.sh" ]
