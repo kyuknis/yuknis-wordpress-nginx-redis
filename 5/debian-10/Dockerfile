@@ -18,7 +18,7 @@ RUN apt-get remove --purge --yes gcc make autoconf libc-dev pkg-config wget
 
 COPY rootfs /
 ENV PHP_SESSION_SAVE_HANDLER=files \
-    PHP_SESSION_SAVE_PATH=\/opt\/bitnami\/php\/var\/run\/session
+    PHP_SESSION_SAVE_PATH=/opt/bitnami/php/var/run/session
 
 ## Change to restricted user and perform on run tasks
 USER 1001
